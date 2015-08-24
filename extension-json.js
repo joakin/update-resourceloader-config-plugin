@@ -22,6 +22,7 @@ function parse (contents, done) {
 
 exports.update = function updateExtensionJson (out, modules) {
   readExtensionJson(function (err, data) {
+    if (err) return console.error(err)
     Object.keys(modules).forEach(function (entry) {
       var md = modules[entry]
       data.ResourceModules[entry] = {
