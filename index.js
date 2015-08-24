@@ -16,7 +16,8 @@ function UpdateResourceLoaderConfig (opts) {
     onKeys: this.updateEntrypointsRLInfo.bind(this, 'i18n')
   })
   this.extractMFModules = new ExtractMFRequiredModules({
-    onModules: this.updateEntrypointsRLInfo.bind(this, 'modules')
+    onModules: this.updateEntrypointsRLInfo.bind(this, 'modules'),
+    aliases: opts.aliases
   })
 }
 

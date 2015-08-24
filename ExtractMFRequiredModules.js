@@ -7,6 +7,7 @@ module.exports = ExtractMFRequiredModules
 function ExtractMFRequiredModules (opts) {
   opts = opts || {}
   this.functionName = 'mw.mobileFrontend.require'
+  this.aliases = opts.aliases || {}
   this.modules = {}
   this.sendModules = opts.onModules || function () {}
 }
@@ -22,7 +23,9 @@ ExtractMFRequiredModules.prototype.apply = function (compiler) {
     // var currentFile = path.relative('./', this.state.current.resource)
     var entry = getEntry(this.state.module)
     self.modules[entry] = self.modules[entry] || []
-    self.modules[entry].push(expr.arguments[0].value)
+    self.modules[entry].push(
+      parseModuleName(self.aliases, expr.arguments[0].value)
+    )
     return true
   })
 }
@@ -36,4 +39,11 @@ function getEntry (module) {
     console.error(module)
     throw new Error('Multiple reasons')
   }
+}
+
+function parseModuleName (aliases, name) {
+  if (aliases[name]) return aliases[name]
+  var hasSlash = name.indexOf('/') !== -1
+  if (hasSlash) return name.split('/')[0]
+  return name
 }
