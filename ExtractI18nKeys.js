@@ -1,4 +1,6 @@
 var path = require('path')
+var objMap = require('./obj-map')
+var uniq = require('./uniq')
 
 module.exports = ExtractI18nKeys
 
@@ -34,13 +36,4 @@ function getEntry (module) {
     console.error(module)
     throw new Error('Multiple reasons')
   }
-}
-
-function uniq (arr) { return arr.filter(function (x, i) { return arr.indexOf(x) === i }) }
-
-function objMap (obj, fn) {
-  return Object.keys(obj).reduce(function (acc, k) {
-    acc[k] = fn(obj[k], k, obj)
-    return acc
-  }, {})
 }
