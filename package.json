@@ -1,0 +1,28 @@
+{
+  "name": "update-resourceloader-config-plugin",
+  "version": "1.0.0",
+  "description": "Update extension.json for mediawiki's resourceloader config with frontend modules for the webpack entry points.",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joakin/update-resourceloader-config-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "resourceloader",
+    "mediawiki"
+  ],
+  "author": "Joaquin Oltra <joaquin@chimeces.com> (http://chimeces.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joakin/update-resourceloader-config-plugin/issues"
+  },
+  "homepage": "https://github.com/joakin/update-resourceloader-config-plugin#readme",
+  "devDependencies": {
+    "standard": "^5.1.0"
+  }
+}
