@@ -1,6 +1,6 @@
-var path = require('path')
 var objMap = require('./obj-map')
 var uniq = require('./uniq')
+var getEntry = require('./get-entry')
 
 module.exports = ExtractMFRequiredModules
 
@@ -28,17 +28,6 @@ ExtractMFRequiredModules.prototype.apply = function (compiler) {
     )
     return true
   })
-}
-
-function getEntry (module) {
-  if (!module.reasons || module.reasons.length === 0) {
-    return path.relative('./', module.resource)
-  } else if (module.reasons.length === 1) {
-    return getEntry(module.reasons[0].module)
-  } else {
-    console.error(module)
-    throw new Error('Multiple reasons')
-  }
 }
 
 function parseModuleName (aliases, name) {

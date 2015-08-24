@@ -1,6 +1,6 @@
-var path = require('path')
 var objMap = require('./obj-map')
 var uniq = require('./uniq')
+var getEntry = require('./get-entry')
 
 module.exports = ExtractI18nKeys
 
@@ -25,15 +25,4 @@ ExtractI18nKeys.prototype.apply = function (compiler) {
     self.messages[entry].push(expr.arguments[0].value)
     return true
   })
-}
-
-function getEntry (module) {
-  if (!module.reasons || module.reasons.length === 0) {
-    return path.relative('./', module.resource)
-  } else if (module.reasons.length === 1) {
-    return getEntry(module.reasons[0].module)
-  } else {
-    console.error(module)
-    throw new Error('Multiple reasons')
-  }
 }
