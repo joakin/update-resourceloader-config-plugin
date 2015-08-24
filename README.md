@@ -40,26 +40,26 @@ Like this:
 
 ```json
 {
-  "//": "..."
-	"ResourceModules": {
-		"resources/ext.gather.special.collection/init.js": {
-			"targets": [
-				"mobile",
-				"desktop"
-			],
-			"group": "other",
-			"dependencies": [
-				"ext.gather.api/CollectionsApi",
-				"Button",
-				"Icon",
-				"ext.gather.collection.confirm/ConfirmationOverlay",
-				"ext.gather.logging/SchemaGatherFlags",
-				"toast"
-			],
-			"scripts": [
-				"build/resources/ext.gather.special.collection/init.js"
-			]
-		}
+  "//": "...",
+  "ResourceModules": {
+    "resources/ext.gather.special.collection/init.js": {
+      "targets": [
+	"mobile",
+      "desktop"
+      ],
+      "group": "other",
+      "dependencies": [
+	"ext.gather.api/CollectionsApi",
+      "Button",
+      "Icon",
+      "ext.gather.collection.confirm/ConfirmationOverlay",
+      "ext.gather.logging/SchemaGatherFlags",
+      "toast"
+      ],
+      "scripts": [
+	"build/resources/ext.gather.special.collection/init.js"
+      ]
+    }
   }
 }
 ```
