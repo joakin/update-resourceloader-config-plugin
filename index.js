@@ -30,7 +30,8 @@ UpdateResourceLoaderConfig.prototype.apply = function (compiler) {
   this.extractMFModules.apply(compiler)
 
   compiler.plugin('done', function () {
-    var modules = parsePluginsToRL(this.currentRLInfo)
+    var entries = Object.keys(compiler.options.entry)
+    var modules = parsePluginsToRL(entries, this.currentRLInfo)
     this.currentRLInfo = newModuleInfo()
     updateResourceLoaderModules(path.relative('./', compiler.outputPath), modules)
   }.bind(this))
@@ -38,8 +39,8 @@ UpdateResourceLoaderConfig.prototype.apply = function (compiler) {
 
 function newModuleInfo () { return { i18n: null, modules: null } }
 
-function parsePluginsToRL (info) {
-  var allKeys = Object.keys(info.i18n).concat(Object.keys(info.modules))
+function parsePluginsToRL (entries, info) {
+  var allKeys = entries.concat(Object.keys(info.i18n)).concat(Object.keys(info.modules))
   return allKeys.reduce(function (acc, k) {
     acc[k] = {
       i18n: info.i18n[k],

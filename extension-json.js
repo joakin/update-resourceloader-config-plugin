@@ -30,7 +30,7 @@ exports.update = function updateExtensionJson (out, modules) {
         group: 'other',
         messages: md.i18n,
         dependencies: md.modules,
-        scripts: [path.join(out, entry)]
+        scripts: [path.join(out, entry) + '.js']
       }
     })
     writeExtensionJson(data, function (err) {
